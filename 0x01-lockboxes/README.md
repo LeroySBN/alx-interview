@@ -14,7 +14,7 @@ Write a method that determines if all the boxes can be opened.
 * Return `True` if all boxes can be opened, else return `False`
 
 ```
-carrie@ubuntu:~/0x01-lockboxes$ ./main_0.py
+~/0x01-lockboxes$ ./main_0.py
 True
 True
 False
