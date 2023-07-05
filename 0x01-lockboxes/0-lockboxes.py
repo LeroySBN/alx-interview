@@ -21,17 +21,20 @@ def unlockBoxes(box, boxes, visited):
     Helper function to recursively explore and unlock boxes
     """
     if all(visited):
-        # If all boxes have been visited, return True to indicate all boxes can be opened
+        # If all boxes visited, return True to indicate all boxes can be opened
         return True
 
     keys = boxes[box]  # Get the keys in the current box
     for key in keys:
         if key < len(boxes) and not visited[key]:
-            # Check if the key is within valid box range and the box corresponding to the key has not been visited
+            # if key is within range and
+            # the box corresponding to the key has not been visited
             visited[key] = True  # Mark the box as visited
             if unlockBoxes(key, boxes, visited):
-                # Recursively call the function with the key as the new starting box index
-                # If the recursive call returns True, immediately return True to propagate the result
+                # Recursively call the function with
+                \ the key as the new starting box index
+                # If the recursive call returns True,
+                \ return True to propagate the result
                 return True
 
     # If no key allows all boxes to be opened, return False
