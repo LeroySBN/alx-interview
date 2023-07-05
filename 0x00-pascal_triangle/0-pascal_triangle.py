@@ -4,20 +4,21 @@ module pascal_triangle
 """
 
 
-def pascal_triangle(n):
-    """
-    returns a list of lists of integers representing the Pascal’s triangle of n
-    """
-    if n <= 0:
-        return []
+def canUnlockAll(boxes):
+    visited = [False] * len(boxes)
+    visited[0] = True
+    return unlockBoxes(0, boxes, visited)
 
-    triangle = [[1]]
-    for i in range(1, n):
-        row = [1]
-        prev_row = triangle[i-1]
-        for j in range(1, i):
-            row.append(prev_row[j-1] + prev_row[j])
-        row.append(1)
-        triangle.append(row)
 
-    return triangle
+def unlockBoxes(box, boxes, visited):
+    if all(visited):
+        return True
+
+    keys = boxes[box]
+    for key in keys:
+        if key < len(boxes) and not visited[key]:
+            visited[key] = True
+            if unlockBoxes(key, boxes, visited):
+                return True
+
+    return False

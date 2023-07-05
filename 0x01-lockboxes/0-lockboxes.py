@@ -6,20 +6,33 @@ module 0-lockboxes
 
 def canUnlockAll(boxes):
     """
-    Returns: True if all boxes can be opened, else False
+    Determines if all the boxes in a list of boxes can be opened
     """
-    # Set to keep track of opened boxes
-    opened_boxes = set([0])
+    # Create a list to track visited boxes, initially all set to False
+    visited = [False] * len(boxes)
+    # Mark the first box as visited (the starting box)
+    visited[0] = True
+    # Call the helper function to explore and unlock boxes
+    return unlockBoxes(0, boxes, visited)
 
-    # Recursive function to open boxes
-    def openBoxes(box_number):
-        for key in boxes[box_number]:
-            if key not in opened_boxes:
-                opened_boxes.add(key)
-                openBoxes(key)
 
-    # Start opening boxes from the first box (box 0)
-    openBoxes(0)
+def unlockBoxes(box, boxes, visited):
+    """
+    Helper function to recursively explore and unlock boxes
+    """
+    if all(visited):
+        # If all boxes have been visited, return True to indicate all boxes can be opened
+        return True
 
-    # Check if all boxes are opened
-    return len(opened_boxes) == len(boxes)
+    keys = boxes[box]  # Get the keys in the current box
+    for key in keys:
+        if key < len(boxes) and not visited[key]:
+            # Check if the key is within valid box range and the box corresponding to the key has not been visited
+            visited[key] = True  # Mark the box as visited
+            if unlockBoxes(key, boxes, visited):
+                # Recursively call the function with the key as the new starting box index
+                # If the recursive call returns True, immediately return True to propagate the result
+                return True
+
+    # If no key allows all boxes to be opened, return False
+    return False
