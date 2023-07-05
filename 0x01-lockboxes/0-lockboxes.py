@@ -32,9 +32,9 @@ def unlockBoxes(box, boxes, visited):
             visited[key] = True  # Mark the box as visited
             if unlockBoxes(key, boxes, visited):
                 # Recursively call the function with
-                \ the key as the new starting box index
+                # the key as the new starting box index
                 # If the recursive call returns True,
-                \ return True to propagate the result
+                # return True to propagate the result
                 return True
 
     # If no key allows all boxes to be opened, return False
