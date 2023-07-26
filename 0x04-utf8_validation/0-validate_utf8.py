@@ -13,9 +13,6 @@ def validUTF8(data):
         bool: True if data is a valid UTF-8 encoding, else return
         False
     """
-    if not data or len(data) == 0:
-        return False
-
     mask1 = 1 << 7  # 10000000
     mask2 = 1 << 6  # 01000000
 
