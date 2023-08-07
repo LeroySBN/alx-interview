@@ -5,3 +5,4 @@
 * [Log Parsing](./0x03-log_parsing/)
 * [UTF-8 Validation](./0x04-utf8_validation/)
 * [N Queens](./0x05-nqueens/)
+* [Star Wars API](./0x06-starwars_api/)
