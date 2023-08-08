@@ -5,13 +5,13 @@ const request = require('request');
 const url = 'https://swapi-api.hbtn.io/api/films/' + process.argv[2];
 
 request(url, function (err, response, body) {
-    if (err) throw err;
-    // console.log(JSON.parse(body).title);
-    for (const i in JSON.parse(body).characters) {
-        request(JSON.parse(body).characters[i], function (err, response, body) {
-            if (err) throw err;
-            console.log(JSON.parse(body).name);
-        });
-    }
-    }
+  if (err) throw err;
+  // console.log(JSON.parse(body).title);
+  for (const i in JSON.parse(body).characters) {
+    request(JSON.parse(body).characters[i], function (err, response, body) {
+      if (err) throw err;
+      console.log(JSON.parse(body).name);
+    });
+  }
+}
 );
