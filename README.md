@@ -8,3 +8,4 @@
 * [Star Wars API](./0x06-starwars_api/)
 * [Rotate 2D Matrix](./0x07-rotate_2d_matrix/)
 * [Making Change](./0x08-making_change/)
+* [Island Perimeter](./0x09-island_perimeter/)
