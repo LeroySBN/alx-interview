@@ -3,39 +3,6 @@
 from math import sqrt
 
 
-# def isWinner(x: int, nums: list) -> str:
-#     """ Prime Game
-#     Arguments:
-#         x {int} -- number of rounds
-#         nums {list} -- list of integers
-#     Returns:
-#         [str] -- name of the player that won the most rounds
-#     """
-#     if not nums or x < 1:
-#         return None
-#     n = max(nums)
-#     nums.sort()
-#     m = [False for i in range(n + 1)]
-#     for i in range(2, int(sqrt(n)) + 1):
-#         if not m[i]:
-#             for j in range(i, n + 1, i):
-#                 m[j] = True
-#     m[0] = m[1] = True
-#     c = 0
-#     for i in range(len(m)):
-#         if not m[i]:
-#             c += 1
-#         m[i] = c
-#     p1 = 0
-#     for n in nums:
-#         p1 += m[n] % 2 == 1
-#     if p1 * 2 == len(nums):
-#         return None
-#     if p1 * 2 < len(nums):
-#         return "Ben"
-#     return "Maria"
-
-
 def isWinner(x, nums):
     """ Prime Game
     Arguments:
@@ -58,6 +25,7 @@ def isWinner(x, nums):
 
     # Define the recursive function to determine the winner
     def canWin(n):
+        """ Determines the winner of the game """
         if n in memo:
             return memo[n]
 
@@ -96,3 +64,28 @@ def isWinner(x, nums):
         return "Ben"
     else:
         return None
+
+    # Logic 2
+    # if not nums or x < 1:
+    #     return None
+    # n = max(nums)
+    # nums.sort()
+    # m = [False for i in range(n + 1)]
+    # for i in range(2, int(sqrt(n)) + 1):
+    #     if not m[i]:
+    #         for j in range(i, n + 1, i):
+    #             m[j] = True
+    # m[0] = m[1] = True
+    # c = 0
+    # for i in range(len(m)):
+    #     if not m[i]:
+    #         c += 1
+    #     m[i] = c
+    # p1 = 0
+    # for n in nums:
+    #     p1 += m[n] % 2 == 1
+    # if p1 * 2 == len(nums):
+    #     return None
+    # if p1 * 2 < len(nums):
+    #     return "Ben"
+    # return "Maria"
