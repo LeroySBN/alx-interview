@@ -37,7 +37,15 @@ from math import sqrt
 
 
 def isWinner(x, nums):
+    """ Prime Game
+    Arguments:
+        x {int} -- number of rounds
+        nums {list} -- list of integers
+    Returns:
+        [str] -- name of the player that won the most rounds
+    """
     def isPrime(num):
+        """ Checks if a number is prime """
         if num <= 1:
             return False
         for i in range(2, int(num ** 0.5) + 1):
