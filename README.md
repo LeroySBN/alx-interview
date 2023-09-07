@@ -9,3 +9,4 @@
 * [Rotate 2D Matrix](./0x07-rotate_2d_matrix/)
 * [Making Change](./0x08-making_change/)
 * [Island Perimeter](./0x09-island_perimeter/)
+* [Prime Game](./0x0A-primegame/)
