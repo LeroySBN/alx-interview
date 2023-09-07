@@ -3,8 +3,14 @@
 from math import sqrt
 
 
-def isWinner(x, nums):
-    """ Prime Game """
+def isWinner(x: int, nums: list) -> str:
+    """ Prime Game
+    Arguments:
+        x {int} -- number of rounds
+        nums {list} -- list of integers
+    Returns:
+        [str] -- name of the player that won the most rounds
+    """
     if not nums or x < 1:
         return None
     n = max(nums)
