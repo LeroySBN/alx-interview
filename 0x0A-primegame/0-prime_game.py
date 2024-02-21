@@ -46,8 +46,7 @@ def isWinner(x, nums):
     #     return False
 
     # # Initialize counters for Maria and Ben's wins
-    # maria_wins = 0
-    # ben_wins = 0
+    # maria_wins = ben_wins = 0
 
     # # Determine the winner for each round
     # for n in nums:
