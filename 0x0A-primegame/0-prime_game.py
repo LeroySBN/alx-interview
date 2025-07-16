@@ -1,92 +1,52 @@
 #!/usr/bin/python3
-""" Prime Game """
+"""0-prime_game.py
+"""
+
+# Initialize a memoization table to store the results of subproblems
+memo = {}
+
+def isPrime(num):
+        """Checks if a number is prime
+        """
+        if num <= 1:
+            return False
+        for i in range(2, int(num ** 0.5) + 1):
+            if num % i == 0:
+                return False
+        return True
+
+def canWin(n):
+    """Determines the winner of the game recursively
+    """
+    winner = False
+
+    if n == 1:
+        return winner
+
+    if n in memo:
+        return memo[n]
+
+    for i in range(2, n + 1):
+        if isPrime(i):
+            if winner:
+                winner = memo[i] = False
+            else:
+                winner = memo[i] = True
+
+    return winner
 
 
 def isWinner(x, nums):
-    """ Prime Game
-    Arguments:
-        x {int} -- number of rounds
-        nums {list} -- list of integers
-    Returns:
-        [str] -- name of the player that won the most rounds
-    """
-    # def isPrime(num):
-    #     """ Checks if a number is prime """
-    #     if num <= 1:
-    #         return False
-    #     for i in range(2, int(num ** 0.5) + 1):
-    #         if num % i == 0:
-    #             return False
-    #     return True
+    maria_wins = ben_wins = 0
 
-    # # Initialize a memoization table to store the results of subproblems
-    # memo = {}
-
-    # # Define the recursive function to determine the winner
-    # def canWin(n):
-    #     """ Determines the winner of the game """
-    #     if n in memo:
-    #         return memo[n]
-
-    #     # Base case: If n is 1, the current player loses
-    #     if n == 1:
-    #         memo[n] = False
-    #         return False
-
-    #     # Check if the current player can make
-    #     # a move leading to a losing position
-    #     for i in range(2, n + 1):
-    #         if isPrime(i) and n % i == 0:
-    #             if not canWin(n - i):
-    #                 memo[n] = True
-    #                 return True
-
-    #     # If no winning move is found, the current player loses
-    #     memo[n] = False
-    #     return False
-
-    # # Initialize counters for Maria and Ben's wins
-    # maria_wins = ben_wins = 0
-
-    # # Determine the winner for each round
-    # for n in nums:
-    #     if canWin(n):
-    #         ben_wins += 1
-    #     else:
-    #         maria_wins += 1
-
-    # # Determine the overall winner
-    # if maria_wins > ben_wins:
-    #     return "Maria"
-    # elif maria_wins < ben_wins:
-    #     return "Ben"
-    # else:
-    #     return None
-
-    # Logic 2
-    def sqrt(n):
-        """ Calculates the square root of a number """
-        return int(n ** 0.5)
-    if not nums or x < 1:
-        return None
-    n = max(nums)
-    nums.sort()
-    m = [False for i in range(n + 1)]
-    for i in range(2, int(sqrt(n)) + 1):
-        if not m[i]:
-            for j in range(i, n + 1, i):
-                m[j] = True
-    m[0] = m[1] = True
-    c = 0
-    for i in range(len(m)):
-        if not m[i]:
-            c += 1
-        m[i] = c
-    p1 = 0
     for n in nums:
-        p1 += m[n] % 2 == 1
-    if p1 * 2 == len(nums):
-        return None
-    if p1 * 2 < len(nums):
+        if canWin(n):
+            maria_wins += 1
+        else:
+            ben_wins += 1
+        print(f"{memo} -> Maria: {maria_wins} vs Ben: {ben_wins}")
+
+    if ben_wins > maria_wins:
         return "Ben"
-    return "Maria"
+    else:
+        return "Maria"
