@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-"""
-Main file for testing
+"""0-main.py
+Main file for testing the 0-minoperations module
 """
 
 minOperations = __import__('0-minoperations').minOperations
@@ -14,5 +14,8 @@ print("Min # of operations to reach {} char: {}".format(n, minOperations(n)))
 n = 3
 print("Min # of operations to reach {} char: {}".format(n, minOperations(n)))
 
-n = 8``
+n = 8
+print("Min # of operations to reach {} char: {}".format(n, minOperations(n)))
+
+n = 11
 print("Min # of operations to reach {} char: {}".format(n, minOperations(n)))
